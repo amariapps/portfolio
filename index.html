@@ -1,249 +1,471 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Amaria Abboud</title>
-    <link rel="icon" type="image/x-icon" href="./assets/img/icons8-fusée-64.png" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
-        type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amaria Abboud — Platform &amp; Automation Engineer</title>
+<meta name="description" content="Ingénieure infrastructure : automatisation, Infrastructure as Code, CI/CD, Kubernetes. Lyon, France — ouverte au full remote.">
+<style>
+:root{
+  --bg:#0B1519; --surf:#101F25; --surf2:#16282F; --line:#1E353D;
+  --txt:#C9D6DA; --dim:#7B8C93; --white:#F2F7F8;
+  --sand:#E0A458; --teal:#45B3AE;
+  --mono:ui-monospace,"SF Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);
+     font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 28px}
+a{color:var(--teal)}
+::selection{background:var(--sand);color:#0B1519}
+
+/* ---------- sélecteur de langue ---------- */
+.lang{position:fixed;top:20px;right:24px;z-index:60;display:flex;gap:8px;
+      background:rgba(11,21,25,.82);padding:6px;border:1px solid var(--line);
+      backdrop-filter:blur(6px)}
+.lang button{background:none;border:1px solid transparent;padding:3px;cursor:pointer;
+             line-height:0;opacity:.42;transition:.2s;border-radius:2px}
+.lang button:hover{opacity:.85}
+.lang button[aria-pressed="true"]{opacity:1;border-color:var(--sand)}
+.lang svg{width:26px;height:17px;display:block}
+@media(max-width:900px){.lang{top:12px;right:12px}}
+
+/* ---------- nav pastilles ---------- */
+nav.dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40}
+nav.dots a{display:block;width:9px;height:9px;border-radius:50%;background:var(--line);
+      margin:14px 0;position:relative;transition:.25s}
+nav.dots a:hover,nav.dots a.on{background:var(--sand);transform:scale(1.35)}
+nav.dots a span{position:absolute;right:19px;top:-5px;font-family:var(--mono);font-size:11px;
+  color:var(--dim);white-space:nowrap;opacity:0;transition:.25s;pointer-events:none}
+nav.dots a:hover span{opacity:1}
+@media(max-width:900px){nav.dots{display:none}}
+
+/* ---------- héros ---------- */
+.hero{padding:96px 0 70px;border-bottom:1px solid var(--line)}
+h1{margin:0;font-size:clamp(30px,6.4vw,54px);font-weight:800;letter-spacing:2px;
+   text-transform:uppercase;line-height:1.02;color:var(--white)}
+h1 span{color:var(--sand)}
+.role{font-family:var(--mono);color:var(--teal);font-size:clamp(13px,2.5vw,18px);
+      margin-top:14px;letter-spacing:.6px}
+.loc{font-family:var(--mono);font-size:13px;color:var(--dim);margin-top:8px}
+.loc b{color:var(--sand);font-weight:400}
+
+.term{margin-top:34px;background:var(--surf);border:1px solid var(--line);
+      font-family:var(--mono);font-size:13.5px;line-height:1.75;overflow:hidden}
+.term-bar{background:var(--surf2);padding:9px 14px;border-bottom:1px solid var(--line);
+          display:flex;align-items:center;gap:7px}
+.term-bar i{width:10px;height:10px;border-radius:50%;background:var(--line);display:block}
+.term-bar i:first-child{background:#C25B4E}
+.term-bar i:nth-child(2){background:var(--sand)}
+.term-bar i:nth-child(3){background:var(--teal)}
+.term-bar em{font-style:normal;color:var(--dim);font-size:12px;margin-left:8px}
+.term-body{padding:16px 18px;min-height:176px;white-space:pre-wrap;word-break:break-word}
+.term-body .p{color:var(--teal)}
+.term-body .ok{color:var(--sand)}
+.term-body .c{color:var(--white)}
+.cur{display:inline-block;width:8px;height:15px;background:var(--sand);
+     vertical-align:-2px;animation:bl 1s steps(2) infinite}
+@keyframes bl{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+.cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:11px}
+.btn{font-family:var(--mono);font-size:13.5px;text-decoration:none;padding:10px 17px;
+     border:1px solid var(--line);color:var(--txt);transition:.2s;display:inline-block}
+.btn:hover{border-color:var(--sand);color:var(--white)}
+.btn.pri{background:var(--sand);border-color:var(--sand);color:#0B1519;font-weight:700}
+.btn.pri:hover{background:#F0BC77}
+
+/* ---------- sections ---------- */
+section{padding:62px 0;border-bottom:1px solid var(--line)}
+h2{font-family:var(--mono);font-size:13px;letter-spacing:2.4px;text-transform:uppercase;
+   color:var(--dim);margin:0 0 30px;display:flex;align-items:center;gap:11px}
+h2::before{content:"";width:11px;height:11px;background:var(--teal);flex:none}
+
+.pill{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pill>div{background:var(--surf);border:1px solid var(--line);padding:22px;
+          border-top:2px solid var(--sand)}
+.pill h3{margin:0 0 8px;font-size:17px;color:var(--white)}
+.pill p{margin:0;font-size:15px;color:var(--dim)}
+
+.item{display:grid;grid-template-columns:154px 1fr;gap:26px;padding:26px 0;
+      border-top:1px solid var(--line);transition:opacity .25s}
+.item:first-of-type{border-top:none;padding-top:0}
+.item.dim{opacity:.22}
+.when{font-family:var(--mono);font-size:12.5px;color:var(--dim);line-height:1.7}
+.when b{display:block;color:var(--white);font-weight:700}
+h3{margin:0;font-size:20px;color:var(--white);line-height:1.3}
+.org{color:var(--teal);font-weight:700;margin:3px 0 12px}
+.org i{color:var(--dim);font-weight:400;font-style:normal}
+ul{margin:0;padding-left:19px}
+li{margin-bottom:6px}
+li::marker{color:var(--sand)}
+strong{color:var(--white);font-weight:700}
+
+.proj{background:var(--surf);border:1px solid var(--line);padding:24px;margin-bottom:16px;
+      transition:.2s;display:block}
+.proj:hover{border-color:var(--sand)}
+.proj h3 a{color:var(--white);text-decoration:none}
+.proj h3 a:hover{color:var(--sand)}
+.stack{font-family:var(--mono);font-size:12.5px;color:var(--dim);margin:6px 0 12px}
+.proj p{margin:0 0 14px;color:var(--txt)}
+
+.chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:5px}
+.chips span{font-family:var(--mono);font-size:11.5px;color:var(--dim);
+  border:1px solid var(--line);padding:2px 7px;transition:.18s}
+.chips span.hit{border-color:var(--sand);color:var(--sand)}
+.hint{font-family:var(--mono);font-size:12.5px;color:var(--dim);margin:-16px 0 20px}
+.sk{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:12px 0;
+    border-top:1px solid var(--line)}
+.sk:first-of-type{border-top:none}
+.sk-k{font-family:var(--mono);font-size:12.5px;color:var(--dim);text-transform:uppercase;
+      letter-spacing:.6px;padding-top:5px}
+.tag{font-family:var(--mono);font-size:12.5px;color:var(--txt);background:var(--surf);
+     border:1px solid var(--line);padding:5px 10px;display:inline-block;margin:0 6px 6px 0;
+     transition:.18s;user-select:none}
+.tag[data-t]{cursor:pointer}
+.tag[data-t]:hover{border-color:var(--sand);color:var(--white)}
+.tag.on{background:var(--sand);border-color:var(--sand);color:#0B1519;font-weight:700}
+
+footer{padding:56px 0 64px}
+footer p.big{font-size:19px;color:var(--white);margin:0 0 20px;max-width:38ch}
+
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .cur{animation:none}
+  html{scroll-behavior:auto}
+}
+@media(max-width:760px){
+  .pill{grid-template-columns:1fr}
+  .item,.sk{grid-template-columns:1fr;gap:6px}
+  .hero{padding:76px 0 46px}
+  section{padding:46px 0}
+}
+</style>
 </head>
+<body>
 
-<body id="page-top">
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">Amaria Abboud</span>
-            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                    src="assets/img/open-computer.jpg" alt="..." /></span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">A propos</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#technos">Technos favorites</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projets</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Intérêts</a></li>
-            </ul>
-        </div>
-    </nav>
-    <!-- Page Content-->
-    <div class="container-fluid p-0">
-        <!-- About-->
-        <section class="resume-section" id="about">
-            <div class="resume-section-content">
-                <h1 class="mb-0">
-                    Amaria
-                    <span class="text-primary">Abboud</span>
-                </h1>
-                <div class="subheading mb-5">
-                    Ingénieure DevOps & Développement Fullstack
-                </div>
-                <p class="lead mb-5">Autodidacte et passionnée par le développement et l’automatisation, j’aime
-                    transformer mes idées en projets concrets et apprendre en continu.</p>
-                <div class="social-icons">
-                    <a class="social-icon" href="https://www.linkedin.com/in/amaria-a-849065268/"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a class="social-icon" href="https://github.com/amariapps"><i class="fab fa-github"></i></a>
-                    <a class="social-icon" href="mailto:amaria.abboud@hotmail.com"><i class="fa fa-paper-plane"></i></a>
+<div class="lang" role="group" aria-label="Langue / Language">
+  <button id="bFR" aria-pressed="true" title="Français">
+    <svg viewBox="0 0 9 6" aria-hidden="true"><rect width="3" height="6" fill="#002395"/><rect x="3" width="3" height="6" fill="#fff"/><rect x="6" width="3" height="6" fill="#ED2939"/></svg>
+  </button>
+  <button id="bEN" aria-pressed="false" title="English">
+    <svg viewBox="0 0 60 30" aria-hidden="true">
+      <clipPath id="uk"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+      <g clip-path="url(#uk)">
+        <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+      </g>
+    </svg>
+  </button>
+</div>
 
-                </div>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Technos-->
-        <section class="resume-section" id="technos">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Technos favorites</h2>
-                <div class="container">
-                    <div class="row g-3">
-                        <div class="col-4 col-md-2">
-                            <img src="./assets/img/python-original.svg" alt="Image 2" class="square-img img-fluid">
-                        </div>
-                        <div class="col-4 col-md-2">
-                            <img src="./assets/img/java-original.svg" alt="Image 5" class="square-img img-fluid">
-                        </div>
-                        <div class="col-4 col-md-2">
-                            <img src="./assets/img/angular-original.svg" alt="Image 1" class="square-img img-fluid">
-                        </div>
-                        <div class="col-4 col-md-2">
-                            <img src="./assets/img/react-original.svg" alt="Image 4" class="square-img img-fluid">
-                        </div>
-                        <div class="col-4 col-md-2">
-                            <img src="./assets/img/javascript-original.svg" alt="Image 3" class="square-img img-fluid">
-                        </div>
-                        <div class="col-4 col-md-2">
-                            <img src="./assets/img/typescript-original.svg" alt="Image 3" class="square-img img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Projetcs -->
-        <section class="resume-section" id="projects">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Projets</h2>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="card mb-3 shadow" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <img src="./assets/img/expenses.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title"><a href="https://github.com/amariapps/spendsmart" class="text-decoration-none">Application web de suivi des dépenses</a></h3>
-                                    <p class="card-text">C#, ASP.NET 8 MVC</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card mb-3 shadow" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <img src="./assets/img/tracker.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title"><a href="https://github.com/amariapps/CryptoTrackerAPI" class="text-decoration-none">Application web de suivi des prix des cryptomonnaies</a></h3>
-                                    <p class="card-text">JavaScript, React, Hooks, Axios, API</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card mb-3 shadow" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <img src="./assets/img/travel.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title"><a href="https://github.com/amariapps/Travelo" class="text-decoration-none">UI Design - Application web de réservation de voyage</a></h3>
-                                    <p class="card-text">JavaScript, React</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card mb-3 shadow" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="./assets/img/courses.png" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title"><a href="https://github.com/amariapps/online_course_master_class" class="text-decoration-none">UI Design - Application de cours en ligne</a></h3>
-                                        <p class="card-text">Flutter</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card mb-3 shadow" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="./assets/img/hotel.png" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title"><a href="https://github.com/amariapps/hotelbooking" class="text-decoration-none">UI Design - Application de réservation d'hôtel</a></h3>
-                                        <p class="card-text">Flutter</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card mb-3 shadow" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <img src="./assets/img/pages_transition.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title"><a href="https://github.com/amariapps/WebsitePageTransitions" class="text-decoration-none">Page web - Effet transitions</a></h3>
-                                    <p class="card-text">JavaScript, React</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card mb-3 shadow" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <img src="./assets/img/pizza.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title"><a href="https://github.com/amariapps/PizzaWebsite" class="text-decoration-none">UI Design - Site web ecommerce de restaurant</a></h3>
-                                    <p class="card-text">JavaScript, React</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card mb-3 shadow" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="./assets/img/plants.png" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title"><a href="https://github.com/amariapps/plants" class="text-decoration-none">UI Design - Application ecommerce de plantes</a></h3>
-                                        <p class="card-text">Flutter</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card mb-3 shadow" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="./assets/img/weather.png" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title"><a href="https://github.com/amariapps/weather" class="text-decoration-none">UI Design - Application météo</a></h3>
-                                        <p class="card-text">Flutter</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Interests-->
-        <section class="resume-section" id="interests">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Intérêts</h2>
-                <div class="container py-5">
-                    <div class="row text-center g-4">
-                        <div class="col-12 col-md-4">
-                            <img src="./assets/img/computer-code.jpg" alt="Image 1"
-                                class="rounded  img-fluid mx-auto d-block">
-                            <div class="img-title display-6 mt-3">Développement Fullstack</div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <img src="./assets/img/gear.jpg" alt="Image 2" class="rounded  img-fluid mx-auto d-block">
-                            <div class="img-title display-6 mt-3">Automatisation</div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <img src="./assets/img/girl-taekwondo.jpg" alt="Image 3"
-                                class="rounded  img-fluid mx-auto d-block">
-                            <div class="img-title display-6 mt-3">Taekwondo</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<nav class="dots" aria-label="Sections">
+  <a href="#top" class="on"><span data-en="Home">Accueil</span></a>
+  <a href="#faire"><span data-en="What I do">Ce que je fais</span></a>
+  <a href="#parcours"><span data-en="Experience">Parcours</span></a>
+  <a href="#projets"><span data-en="Projects">Projets</span></a>
+  <a href="#skills"><span data-en="Skills">Compétences</span></a>
+  <a href="#contact"><span data-en="Contact">Contact</span></a>
+</nav>
+
+<div id="top" class="hero">
+  <div class="wrap">
+    <h1>Amaria <span>Abboud</span></h1>
+    <div class="role">Platform &amp; Automation Engineer</div>
+    <div class="loc" data-en='Lyon, France · <b>open to remote</b>'>Lyon, France · <b>ouverte au full remote</b></div>
+
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><em>amaria@platform — zsh</em></div>
+      <div class="term-body" id="t"></div>
     </div>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-</body>
 
+    <div class="cta">
+      <a class="btn pri" href="mailto:amaria.abboud@hotmail.com" data-en="Get in touch">Me contacter</a>
+      <a class="btn" href="https://github.com/amariapps">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/amaria-a-849065268/">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<section id="faire">
+  <div class="wrap rv">
+    <h2 data-en="What I do">Ce que je fais</h2>
+    <div class="pill">
+      <div>
+        <h3 data-en="I automate">J'automatise</h3>
+        <p data-en="Workflows, playbooks, scripts. Every repeated manual step is a bug to fix.">Workflows, playbooks, scripts. Tout geste manuel répété est un bug à corriger.</p>
+      </div>
+      <div>
+        <h3 data-en="I industrialise">J'industrialise</h3>
+        <p data-en="Pipelines, Infrastructure as Code, tests. What works once must work every time.">Pipelines, Infrastructure as Code, tests. Ce qui marche une fois doit marcher à chaque fois.</p>
+      </div>
+      <div>
+        <h3 data-en="I document">Je documente</h3>
+        <p data-en="Runbooks, architecture diagrams, procedures. A tool nobody understands doesn't exist.">Procédures, schémas d'architecture, runbooks. Un outil que personne ne comprend n'existe pas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="parcours">
+  <div class="wrap rv">
+    <h2 data-en="Experience">Parcours</h2>
+
+    <div class="item" data-tech="apache bash docker docs git gitlab linux n8n nginx powershell windows">
+      <div class="when" data-en='<b>Apr 2026 → present</b>Lyon, France'><b>Avril 2026 → aujourd'hui</b>Lyon, France</div>
+      <div>
+        <h3 data-en="IT Application Manager">Gestionnaire Applications SI</h3>
+        <div class="org" data-en='INSA Lyon <i>· IT Department</i>'>INSA Lyon <i>· Direction des Systèmes d'Information</i></div>
+        <ul>
+          <li data-en="Designed and built an <strong>n8n automation workflow</strong> reconciling identities between the printing system and the LDAP directory">Conception et développement d'un <strong>workflow d'automatisation n8n</strong> de réconciliation d'identités entre le système d'impression et l'annuaire LDAP</li>
+          <li data-en="<strong>Industrialised the ingestion pipeline</strong> of a digital collections platform, extending it from one content type to three"><strong>Industrialisation du pipeline d'import</strong> d'une plateforme documentaire, étendu d'un seul type de contenu à trois</li>
+          <li data-en="Ran a <strong>security audit</strong> following a CERT-FR advisory: compromise assessment, vulnerability report, hardening recommendations"><strong>Audit de sécurité</strong> suite à une alerte CERT-FR : recherche de compromission, rapport de vulnérabilités, recommandations de durcissement</li>
+          <li data-en="Identified and fixed an <strong>unauthenticated data exposure</strong> — Apache access control, POSIX ACLs">Identification et correction d'une <strong>exposition de données non authentifiée</strong> — contrôle d'accès Apache, ACLs POSIX</li>
+          <li data-en="<strong>Automated a 39 GB file migration</strong> between servers"><strong>Migration automatisée de 39 Go</strong> de fichiers entre serveurs</li>
+          <li data-en="Wrote the <strong>operations documentation</strong> and architecture diagrams">Rédaction de la <strong>documentation d'exploitation</strong> et des schémas d'architecture</li>
+        </ul>
+        <div class="chips"><span data-k="n8n">n8n</span><span data-k="docker">Docker</span><span data-k="nginx">Nginx</span><span data-k="apache">Apache</span><span data-k="linux">Linux</span><span data-k="windows">Windows</span><span data-k="bash">Bash</span><span data-k="powershell">PowerShell</span><span data-k="git">Git</span><span data-k="gitlab">GitLab</span><span data-k="docs">Documentation</span></div>
+      </div>
+    </div>
+
+    <div class="item" data-tech="ansible bash docs git gitlab linux powershell windows">
+      <div class="when" data-en='<b>Jan 2025 → Dec 2025</b>Lyon, France'><b>Janv. 2025 → déc. 2025</b>Lyon, France</div>
+      <div>
+        <h3 data-en="DevOps Technical Expert">Experte technique DevOps</h3>
+        <div class="org" data-en='EDF <i>· via Open Groupe</i>'>EDF <i>· mission via Open Groupe</i></div>
+        <ul>
+          <li data-en="<strong>Automated recurring workloads with Ansible</strong>: built playbooks to improve pipeline reliability and remove manual intervention"><strong>Automatisation de traitements récurrents via Ansible</strong> : développement de playbooks pour fiabiliser les chaînes et supprimer des interventions manuelles</li>
+          <li data-en="Built scripts to <strong>industrialise</strong> technical operations">Développement de scripts d'<strong>industrialisation</strong> des opérations techniques</li>
+          <li data-en="Industrialised Control-M scheduling chains">Industrialisation des chaînes d'ordonnancement Control-M</li>
+          <li data-en="Wrote and maintained the <strong>technical documentation</strong>">Rédaction et maintien de la <strong>documentation technique</strong></li>
+        </ul>
+        <div class="chips"><span data-k="ansible">Ansible</span><span>Control-M</span><span data-k="linux">Linux</span><span data-k="windows">Windows</span><span data-k="bash">Bash</span><span data-k="powershell">PowerShell</span><span data-k="git">Git</span><span data-k="gitlab">GitLab</span><span data-k="docs">Documentation</span></div>
+      </div>
+    </div>
+
+    <div class="item" data-tech="ansible azure bash docs git gitlab jenkins kubernetes linux powershell terraform windows">
+      <div class="when" data-en='<b>Nov 2023 → Sep 2024</b>Lyon, France'><b>Nov. 2023 → sept. 2024</b>Lyon, France</div>
+      <div>
+        <h3 data-en="DevOps Engineer">Ingénieure DevOps</h3>
+        <div class="org" data-en='SNCF <i>· via Open Groupe</i>'>SNCF <i>· mission via Open Groupe</i></div>
+        <ul>
+          <li data-en="Built a <strong>complete DevOps pipeline</strong>: GitLab structure, Jenkins pipelines, Ansible playbooks">Mise en place d'une <strong>chaîne DevOps complète</strong> : GitLab, pipelines Jenkins, playbooks Ansible</li>
+          <li data-en="Managed an <strong>AKS (Azure Kubernetes Service)</strong> cluster and related Azure resources">Gestion d'un cluster <strong>AKS (Azure Kubernetes Service)</strong> et des ressources Azure</li>
+          <li data-en="Ran internal <strong>Terraform / AWS</strong> training sessions; mentored interns">Animation de formations internes <strong>Terraform / AWS</strong> et mentorat de stagiaires</li>
+        </ul>
+        <div class="chips"><span data-k="ansible">Ansible</span><span data-k="jenkins">Jenkins</span><span data-k="gitlab">GitLab</span><span data-k="git">Git</span><span data-k="kubernetes">Kubernetes</span><span data-k="azure">Azure</span><span data-k="terraform">Terraform</span><span data-k="linux">Linux</span><span data-k="windows">Windows</span><span data-k="bash">Bash</span><span data-k="powershell">PowerShell</span><span data-k="docs">Documentation</span></div>
+      </div>
+    </div>
+
+    <div class="item" data-tech="ansible bash git gitlab linux molecule powershell python windows">
+      <div class="when" data-en='<b>Sep 2022 → Aug 2023</b>Lyon, France'><b>Sept. 2022 → août 2023</b>Lyon, France</div>
+      <div>
+        <h3 data-en="DevOps Engineer">Ingénieure DevOps</h3>
+        <div class="org" data-en='Enedis <i>· via Open Groupe</i>'>Enedis <i>· mission via Open Groupe</i></div>
+        <ul>
+          <li data-en="<strong>Automated recurring tasks</strong> with Ansible, GitLab and Python — scripts and RPA robots, measurably reducing toil"><strong>Automatisation de tâches récurrentes</strong> avec Ansible, GitLab et Python — scripts et robots (RDA/RPA), réduction mesurée du TOIL</li>
+          <li data-en="Implemented <strong>integration testing for Ansible roles using Molecule</strong>">Implémentation de <strong>tests d'intégration pour les rôles Ansible avec Molecule</strong></li>
+          <li data-en="Ran technical training sessions (GitLab, Python, OOP)">Animation de formations techniques (GitLab, Python, POO)</li>
+        </ul>
+        <div class="chips"><span data-k="ansible">Ansible</span><span data-k="gitlab">GitLab</span><span data-k="git">Git</span><span data-k="python">Python</span><span data-k="molecule">Molecule</span><span data-k="linux">Linux</span><span data-k="windows">Windows</span><span data-k="bash">Bash</span><span data-k="powershell">PowerShell</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projets">
+  <div class="wrap rv">
+    <h2 data-en="Projects">Projets</h2>
+
+    <div class="proj item" data-tech="javascript">
+      <div style="grid-column:1/-1">
+        <h3><a href="https://github.com/amariapps/TABLO">TABLO ↗</a></h3>
+        <div class="stack" data-en="HTML · JavaScript · local storage · no dependencies">HTML · JavaScript · stockage local · sans dépendance</div>
+        <p data-en="A hybrid Kanban / to-do task manager with sub-tasks and rich notes. Self-contained single-file app: no server, no installation, no data leaving the machine.">Gestionnaire de tâches hybride Kanban / to-do avec sous-tâches et notes enrichies. Application autonome en un seul fichier : pas de serveur, pas d'installation, aucune donnée qui sort du poste.</p>
+        <a class="btn" href="https://github.com/amariapps/TABLO" data-en="View the code →">Voir le code →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap rv">
+    <h2 data-en="Skills">Compétences</h2>
+    <p class="hint" data-en="↓ Click a technology to show only the relevant experience.">↓ Cliquez une technologie pour ne voir que les expériences concernées.</p>
+
+    <div class="sk"><div class="sk-k" data-en="IaC &amp; automation">IaC &amp; automatisation</div><div>
+      <span class="tag" data-t="ansible">Ansible</span><span class="tag" data-t="n8n">n8n</span><span class="tag" data-t="terraform">Terraform</span><span class="tag">AWX</span><span class="tag" data-t="molecule">Molecule</span><span class="tag" data-t="bash">Bash</span><span class="tag" data-t="powershell">PowerShell</span></div></div>
+    <div class="sk"><div class="sk-k">CI/CD</div><div>
+      <span class="tag" data-t="gitlab">GitLab CI/CD</span><span class="tag" data-t="jenkins">Jenkins</span><span class="tag" data-t="git">Git</span></div></div>
+    <div class="sk"><div class="sk-k" data-en="Containers &amp; cloud">Conteneurs &amp; cloud</div><div>
+      <span class="tag" data-t="docker">Docker</span><span class="tag" data-t="kubernetes">Kubernetes</span><span class="tag" data-t="azure">Azure</span><span class="tag">Helm</span><span class="tag">AWS</span><span class="tag">GCP</span></div></div>
+    <div class="sk"><div class="sk-k" data-en="Systems &amp; data">Systèmes &amp; données</div><div>
+      <span class="tag" data-t="linux">Linux</span><span class="tag" data-t="nginx">Nginx</span><span class="tag" data-t="apache">Apache</span><span class="tag" data-t="windows">Windows</span><span class="tag">Tomcat</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span></div></div>
+    <div class="sk"><div class="sk-k" data-en="Languages">Langages</div><div>
+      <span class="tag" data-t="python">Python</span><span class="tag">Bash</span><span class="tag" data-t="javascript">JavaScript</span><span class="tag">Java</span></div></div>
+    <div class="sk"><div class="sk-k">Documentation</div><div>
+      <span class="tag" data-t="docs" data-en="Technical writing">Docs techniques</span><span class="tag">Runbooks</span><span class="tag">docs-as-code</span></div></div>
+    <div class="sk"><div class="sk-k" data-en="Certifications">Certifications</div><div>
+      <span class="tag">KCNA</span><span class="tag">Azure AZ-900</span><span class="tag">AWS Cloud Practitioner</span></div></div>
+    <div class="sk"><div class="sk-k" data-en="Education">Formation</div><div>
+      <span class="tag" data-en="BSc Computer Science — Lyon 1">Licence Informatique — Lyon 1</span><span class="tag" data-en="Linux Administration">Administration Linux</span></div></div>
+    <div class="sk"><div class="sk-k" data-en="Spoken languages">Langues</div><div>
+      <span class="tag" data-en="French — native">Français — langue maternelle</span><span class="tag" data-en="English — B1, technical">Anglais — B1 technique</span></div></div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap rv">
+    <h2 data-en="Contact">Contact</h2>
+    <p class="big" data-en="Open to fully remote roles — platform engineering, automation, internal tooling.">Ouverte aux opportunités en full remote — plateforme, automatisation, outillage interne.</p>
+    <a class="btn pri" href="mailto:amaria.abboud@hotmail.com">amaria.abboud@hotmail.com</a>
+    <a class="btn" href="https://github.com/amariapps">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/amaria-a-849065268/">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ---------- bascule de langue ---------- */
+  var nodes = [].slice.call(document.querySelectorAll('[data-en]'));
+  nodes.forEach(function(n){ n.setAttribute('data-fr', n.innerHTML); });
+
+  var META = {
+    fr:{title:"Amaria Abboud — Platform & Automation Engineer",
+        desc:"Ingénieure infrastructure : automatisation, Infrastructure as Code, CI/CD, Kubernetes. Lyon, France — ouverte au full remote."},
+    en:{title:"Amaria Abboud — Platform & Automation Engineer",
+        desc:"Infrastructure engineer: automation, Infrastructure as Code, CI/CD, Kubernetes. Lyon, France — open to remote."}
+  };
+
+  var TERM = {
+    fr:[{t:'$ ',c:'ansible-playbook remove-manual-work.yml',k:'c'},
+        {t:'',c:'PLAY [Ce que je construis] **********************',k:'p'},
+        {t:'',c:'ok: [workflows]     automatisation des tâches répétées',k:''},
+        {t:'',c:'ok: [pipelines]     CI/CD, Infrastructure as Code',k:''},
+        {t:'',c:'ok: [outillage]     outils internes pour les équipes',k:''},
+        {t:'',c:'ok: [documentation] procédures, schémas, runbooks',k:''},
+        {t:'',c:'PLAY RECAP  changed=4  failed=0  toil=0',k:'ok'},
+        {t:'$ ',c:'',k:'c'}],
+    en:[{t:'$ ',c:'ansible-playbook remove-manual-work.yml',k:'c'},
+        {t:'',c:'PLAY [What I build] ****************************',k:'p'},
+        {t:'',c:'ok: [workflows]     automating repetitive work',k:''},
+        {t:'',c:'ok: [pipelines]     CI/CD, Infrastructure as Code',k:''},
+        {t:'',c:'ok: [tooling]       internal tools for engineers',k:''},
+        {t:'',c:'ok: [documentation] runbooks, diagrams, procedures',k:''},
+        {t:'',c:'PLAY RECAP  changed=4  failed=0  toil=0',k:'ok'},
+        {t:'$ ',c:'',k:'c'}]
+  };
+
+  var lang = 'fr', runId = 0;
+  var bFR = document.getElementById('bFR'), bEN = document.getElementById('bEN');
+  var el  = document.getElementById('t');
+
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+  function runTerm(){
+    if(!el) return;
+    var lines = TERM[lang], id = ++runId;
+    if(reduce){
+      el.textContent = lines.map(function(l){ return l.t + l.c; }).join('\n');
+      return;
+    }
+    var li=0, ci=0, out='';
+    (function tick(){
+      if(id !== runId) return;
+      if(li >= lines.length){ el.innerHTML = out + '<span class="cur"></span>'; return; }
+      var L = lines[li];
+      if(ci === 0 && L.t) out += '<span class="p">' + esc(L.t) + '</span>';
+      if(ci < L.c.length){
+        var ch = esc(L.c.charAt(ci));
+        out += L.k ? '<span class="' + L.k + '">' + ch + '</span>' : ch;
+        ci++;
+        el.innerHTML = out + '<span class="cur"></span>';
+        setTimeout(tick, 14 + Math.random()*22);
+      } else {
+        out += '\n'; li++; ci=0;
+        el.innerHTML = out + '<span class="cur"></span>';
+        setTimeout(tick, 240);
+      }
+    })();
+  }
+
+  function setLang(l){
+    lang = l;
+    document.documentElement.lang = l;
+    nodes.forEach(function(n){
+      var v = n.getAttribute(l === 'en' ? 'data-en' : 'data-fr');
+      if(v !== null) n.innerHTML = v;
+    });
+    document.title = META[l].title;
+    var m = document.querySelector('meta[name="description"]');
+    if(m) m.setAttribute('content', META[l].desc);
+    bFR.setAttribute('aria-pressed', l === 'fr');
+    bEN.setAttribute('aria-pressed', l === 'en');
+    try{ localStorage.setItem('lang', l); }catch(e){}
+    runTerm();
+  }
+
+  bFR.addEventListener('click', function(){ setLang('fr'); });
+  bEN.addEventListener('click', function(){ setLang('en'); });
+
+  var saved = null;
+  try{ saved = localStorage.getItem('lang'); }catch(e){}
+  if(!saved) saved = (navigator.language || '').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+  setLang(saved === 'en' ? 'en' : 'fr');
+
+  /* ---------- filtre par technologie ---------- */
+  var items = [].slice.call(document.querySelectorAll('.item'));
+  var tags  = [].slice.call(document.querySelectorAll('.tag[data-t]'));
+  var active = null;
+  tags.forEach(function(tag){
+    tag.setAttribute('role','button');
+    tag.setAttribute('tabindex','0');
+    function toggle(){
+      var t = tag.getAttribute('data-t');
+      active = (active === t) ? null : t;
+      tags.forEach(function(x){ x.classList.toggle('on', x.getAttribute('data-t') === active); });
+      items.forEach(function(it){
+        var has = !active || (it.getAttribute('data-tech')||'').indexOf(active) > -1;
+        it.classList.toggle('dim', !has);
+        [].forEach.call(it.querySelectorAll('.chips span'), function(c){
+          c.classList.toggle('hit', !!active && c.getAttribute('data-k') === active);
+        });
+      });
+    }
+    tag.addEventListener('click', toggle);
+    tag.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+
+  /* ---------- révélation au défilement ---------- */
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12});
+    document.querySelectorAll('.rv').forEach(function(n){ io.observe(n); });
+  } else {
+    document.querySelectorAll('.rv').forEach(function(n){ n.classList.add('in'); });
+  }
+
+  /* ---------- nav active ---------- */
+  var ids = ['top','faire','parcours','projets','skills','contact'];
+  var secs = ids.map(function(i){ return document.getElementById(i); }).filter(Boolean);
+  var dots = [].slice.call(document.querySelectorAll('nav.dots a'));
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY + window.innerHeight*0.34, cur = 0;
+    secs.forEach(function(s,i){ if(s.offsetTop <= y) cur = i; });
+    dots.forEach(function(d,i){ d.classList.toggle('on', i === cur); });
+  }, {passive:true});
+})();
+</script>
+</body>
 </html>
